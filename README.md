@@ -4,7 +4,7 @@
 
 <br>
 
-**MimeDetect** is an experiment on writing a Node-module with Rust (using [neon-bindings](https://github.com/neon-bindings/neon)) and wrapping everything up into an Electron application.
+**MimeDetect** is an experiment on writing a Node-module with Rust (using [neon-bindings](https://github.com/neon-bindings/neon)) and wrapping everything up into an [Electron](https://www.electronjs.org/) application.
 
 Usage is pretty straightforward: you drop a file — you get its MIME-type. You can also drop multiple files or even a folder.
 
@@ -14,7 +14,7 @@ Usage is pretty straightforward: you drop a file — you get its MIME-type. You 
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/24318966/80740318-926c3200-8b20-11ea-991b-c6a9be1c0452.png)
+![image](https://user-images.githubusercontent.com/24318966/80755477-8d67ac80-8b39-11ea-8a83-21cb67181c6d.png)
 
 ## Building
 

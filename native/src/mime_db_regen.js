@@ -1,7 +1,3 @@
-/**
- * Usage:
- * node index.js > mime_types.rs
- */
 const types = require("./db.json");
 const extensions = new Map();
 

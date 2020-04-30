@@ -6,3 +6,5 @@ native/artifacts.json
 **/.DS_Store
 
 native/src/db.json
+
+native/src/mime_types.rs
