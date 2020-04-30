@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MimeDetect</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <script src="./js/dropzone.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/dropzone.min.css">
+    <style>
+    .columns {
+        -moz-column-count: 2;
+        -moz-column-gap: 50px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 50px;
+        column-count: 2;
+        column-gap: 50px;
+        -moz-column-rule: 1px solid #000;
+        -webkit-column-rule: 1px solid #000;
+        column-rule: 1px solid #000;
+        padding: 0 5px;
+    }
+    .columns ul {
+        margin: 0;
+        padding: 0 0 0 2em;
+        list-style: disc;
+    }
+    .columns ul li {
+        padding-top: 10px;
+    }
+    @media screen and (max-width:760px) {
+        .columns {
+            -moz-column-count: 1;
+            -moz-column-gap: 0;
+            -webkit-column-count:1;
+            -webkit-column-gap:0;
+            column-count: 1;
+            column-gap: 0px;
+        }
+    }
+    .fab {
+        width: 1.2em;
+        height: 1.2em;
+        background-color: red;
+        border-radius: 50%;
+        box-shadow: 0 6px 10px 0 #666;
+        transition: all 0.1s ease-in-out;
+
+        font-size: 50px;
+        color: white;
+        text-align: center;
+        line-height: 1.1em;
+
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .fab:hover {
+        box-shadow: 0 6px 14px 0 #666;
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+  </style>
+  </head>
+  <body>
+    <form action="/" class="dropzone" id="file_zone"></form>
+
+    <div style="padding-top: 1.5rem;"></div>
+
+    <div class="columns">
+        <ul id="list"></ul>
+    </div>
+
+    <div class="fab">×</div>
+
+    <script>
+        const path = require("path");
+
+        window.Dropzone.options.fileZone = {
+            autoProcessQueue: false,
+            dictDefaultMessage: "Drop files here",
+            init: function (e) {
+                this.on("addedfile", function (file) {
+                    require("../native").getMimeType(file.path, (_, result) => {
+                        let node = document.createElement("li");
+                        node.innerText = `${file.name} : ${result}`;
+                        document.getElementById("list").appendChild(node);
+                    });
+
+                    this.removeFile(file);
+                });
+            }
+        };
+
+        document.querySelector(".fab").onclick = function (event) {
+            let list = document.getElementById("list");
+            while (list.firstChild) {
+                list.removeChild(list.firstChild);
+            }
+        }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,22 @@
+{
+  "name": "MimeDetect",
+  "version": "0.1.0",
+  "description": "MIME-type detector",
+  "main": "lib/index.js",
+  "author": "Marise Hayashi",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.4.0"
+  },
+  "scripts": {
+    "prebuild": "curl -SsL https://raw.githubusercontent.com/jshttp/mime-db/master/db.json > native/src/db.json && node native/src/mime_db_regen.js > native/src/mime_types.rs",
+    "build": "npm run prebuild && electron-build-env neon build --release",
+    "package": "npm run build && electron-packager . --overwrite",
+    "start": "DEBUG=true electron ."
+  },
+  "devDependencies": {
+    "electron": "^8.2.4",
+    "electron-build-env": "^0.2.0",
+    "electron-packager": "^14.2.1"
+  }
+}
