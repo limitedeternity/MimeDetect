@@ -14,7 +14,7 @@ Usage is pretty straightforward: you drop a file — you get its MIME-type. You 
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/24318966/80755477-8d67ac80-8b39-11ea-8a83-21cb67181c6d.png)
+![Screenshot at May 19 19-45-40](https://user-images.githubusercontent.com/24318966/82354391-69490e00-9a09-11ea-9766-a2454504efc0.png)
 
 ## Building
 
